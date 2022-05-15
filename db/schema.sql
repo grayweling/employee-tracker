@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS `employee_tracker`;
-CREATE DATABASE `employee_tracker`;
-USE `employee_tracker`;
+DROP TABLE IF EXISTS `employee`;
+DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `department`;
 
 CREATE TABLE `department` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -23,7 +23,7 @@ CREATE TABLE `employee` (
     `last_name` VARCHAR(30) NOT NULL,
     `role_id` INT(11) NOT NULL,
         FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
-    `manager_id` INT(11) NOT NULL,
+    `manager_id` INT(11),
         FOREIGN KEY (`manager_id`) REFERENCES `employee` (`id`),
     PRIMARY KEY (`id`)
 );
