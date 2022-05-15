@@ -3,6 +3,8 @@ const express = require('express');
 const apiRoutes = require('./routes/apiRoutes');
 const db = require('./db/connection');
 
+const Company = require('./lib/company');
+
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -21,6 +23,10 @@ db.connect(err => {
     console.log('Database connected.');
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
+
+      const company = new Company();
+      company.seedDatabase();
+      company.menu();
     });
   });
   
